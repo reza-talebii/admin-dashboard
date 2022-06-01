@@ -16,7 +16,7 @@ import NavButton from "./NavButton";
 import { useStateContext } from "../context/ContextProvider";
 
 const Navbar = () => {
-  const { activeMenu, setActiveMenu } = useStateContext();
+  const { handleClick, setActiveMenu, isClicked } = useStateContext();
 
   return (
     <nav className="flex justify-between p-2 md:mx-6 relative">
@@ -30,13 +30,13 @@ const Navbar = () => {
       <section className="flex">
         <NavButton
           title="Cart"
-          customFunc={() => handelClick("cart")}
+          customFunc={() => handleClick("cart")}
           color="blue"
           icon={<FiShoppingCart />}
         />
         <NavButton
           title="Chat"
-          customFunc={() => handelClick("chat")}
+          customFunc={() => handleClick("chat")}
           dotColor="#03C9D7"
           color="blue"
           icon={<BsChatLeft />}
@@ -67,6 +67,11 @@ const Navbar = () => {
             <MdKeyboardArrowDown className="text-gray-400 text-14" />
           </div>
         </TooltipComponent>
+
+        {isClicked.cart && <Cart />}
+        {isClicked.chat && <Chat />}
+        {isClicked.notification && <Notification />}
+        {isClicked.userProfile && <UserProfile />}
       </section>
     </nav>
   );
