@@ -16,7 +16,23 @@ import NavButton from "./NavButton";
 import { useStateContext } from "../context/ContextProvider";
 
 const Navbar = () => {
-  const { handleClick, setActiveMenu, isClicked } = useStateContext();
+  const { handleClick, setActiveMenu, isClicked, setScreenSize, screenSize } =
+    useStateContext();
+
+  //set screen size
+  useEffect(() => {
+    const handelResize = () => setScreenSize(window.innerWidth);
+
+    window.addEventListener("resize", handelResize);
+
+    handelResize();
+
+    return () => window.removeEventListener("resize", handelResize);
+  }, []);
+
+  useEffect(() => {
+    screenSize <= 900 ? setActiveMenu(false) : setActiveMenu(true);
+  }, [screenSize]);
 
   return (
     <nav className="flex justify-between p-2 md:mx-6 relative">
