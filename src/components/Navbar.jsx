@@ -11,13 +11,22 @@ import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 import avatar from "../data/avatar.jpg";
 
 import { Cart, Chat, Notification, UserProfile } from "./";
+import NavButton from "./NavButton";
 
-import { useStateContext } from "../contexts/ContextProvider";
+import { useStateContext } from "../context/ContextProvider";
 
 const Navbar = () => {
   const { activeMenu, setActiveMenu } = useStateContext();
 
-  return <nav></nav>;
+  return (
+    <nav className="flex justify-between p-2 md:mx-6 relative">
+      <NavButton
+        title="menu"
+        customFunc={() => setActiveMenu((p) => !p)}
+        color="blue"
+      />
+    </nav>
+  );
 };
 
 export default Navbar;
