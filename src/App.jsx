@@ -32,9 +32,9 @@ const App = () => {
   const { activeMenu } = useStateContext();
 
   return (
-    <div>
+    <section>
       <BrowserRouter>
-        <div className="flex relative dark:bg-main-dark-bg">
+        <section className="flex relative dark:bg-main-dark-bg">
           <div className="fixed right-4 bottom-4" style={{ zIndex: "1000" }}>
             <TooltipComponent content="Settings" position="Top">
               <button
@@ -46,6 +46,7 @@ const App = () => {
               </button>
             </TooltipComponent>
           </div>
+
           {activeMenu ? (
             <div className="w-72 fixed sidebar dark:bg-secondary-dark-bg bg-white ">
               <Sidebar />
@@ -65,7 +66,8 @@ const App = () => {
             <div className="fixed md:static bg-main-bg dark:bg-main-dark-bg navbar w-full ">
               <Navbar />
             </div>
-            <div>
+
+            <section>
               <Routes>
                 {/* dashboard  */}
                 <Route path="/" element={<Ecommerce />} />
@@ -92,12 +94,12 @@ const App = () => {
                 <Route path="/pyramid" element={<Pyramid />} />
                 <Route path="/stacked" element={<Stacked />} />
               </Routes>
-            </div>
+            </section>
             <Footer />
           </div>
-        </div>
+        </section>
       </BrowserRouter>
-    </div>
+    </section>
   );
 };
 
