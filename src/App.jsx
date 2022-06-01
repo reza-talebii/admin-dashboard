@@ -26,8 +26,10 @@ import {
 
 import "./App.css";
 
+import { useStateContext } from "./context/ContextProvider";
+
 const App = () => {
-  const [activeMenu, setActiveMenu] = useState(true);
+  const { activeMenu } = useStateContext();
 
   return (
     <div>
