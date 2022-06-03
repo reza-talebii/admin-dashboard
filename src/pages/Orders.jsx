@@ -3,7 +3,7 @@ import React from "react";
 import {
   GridComponent,
   ColumnsDirective,
-  // CoumnDirective,
+  ColumnDirective,
   Resize,
   Sort,
   ContextMenu,
@@ -21,8 +21,32 @@ import { Header } from "../components";
 
 const Orders = () => {
   return (
-    <section>
+    <section className="m-2 md:m-10 p-2 md:p-10 bg-white rounded-3xl">
       <Header title="Orders" category="page" />
+      <GridComponent
+        id="gridcomp"
+        dataSource={ordersData}
+        allowPaging
+        allowSorting
+      >
+        <ColumnsDirective>
+          {ordersGrid.map((item, index) => {
+            <ColumnDirective key={index} {...item} />;
+          })}
+        </ColumnsDirective>
+        <Inject
+          services={[
+            Resize,
+            Sort,
+            ContextMenu,
+            Filter,
+            Page,
+            ExcelExport,
+            PdfExport,
+            Edit,
+          ]}
+        />
+      </GridComponent>
     </section>
   );
 };
